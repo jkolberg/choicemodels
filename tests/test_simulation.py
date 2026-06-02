@@ -2,7 +2,7 @@
 Tests for the simulation codebase.
 
 """
-from __future__ import division
+import sys
 
 import numpy as np
 import pandas as pd
@@ -53,11 +53,11 @@ def test_simulation_accuracy():
     data = build_data(5,3)
     
     # Get values associated with an arbitrary row
-    r = np.random.randint(0, 15, 1)
+    r = int(np.random.randint(0, 15))
     row = pd.DataFrame(data).reset_index().iloc[r]
     oid = int(row.oid)
     aid = int(row.aid)
-    prob = float(pd.DataFrame(data).query('oid=='+str(oid)+' & aid=='+str(aid)).sum())
+    prob = float(pd.DataFrame(data).query('oid=='+str(oid)+' & aid=='+str(aid)).to_numpy().sum())
 
     n = 1000
     count = 0
@@ -221,6 +221,11 @@ def test_parallel_lottery_choices(obs, alts, mct, probs):
     aren't any duplicate choices
     
     """
+    if sys.platform.startswith('win'):
+        pytest.skip(
+            "parallel_lottery_choices uses multiprocessing with a local "
+            "closure that is not picklable under Windows 'spawn' start method"
+        )
     num_cpus = multiprocessing.cpu_count()
     batch_size = int(np.ceil(len(obs) / num_cpus))
     choices = parallel_lottery_choices(

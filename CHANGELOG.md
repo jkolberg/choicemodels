@@ -1,5 +1,12 @@
 # ChoiceModels change log
 
+### 0.2.3 (2026-06-02)
+
+- requires Python 3.10+ and pandas 2.0+
+- migrated packaging from `setup.py`/`MANIFEST.in` to `pyproject.toml` (hatchling backend) managed via `uv`
+- switched the `pylogit` dependency to the `stefancoe/pylogit@pandas_23_max` fork (pandas 2.x compatible), installed via Git VCS URL
+- `pylogit` is now imported lazily inside `MultinomialLogit.fit()` so `import choicemodels` no longer requires it at module-load time
+
 ### 0.2.2 (2020-04-17)
 
 - production release

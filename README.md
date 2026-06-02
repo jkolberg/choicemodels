@@ -26,6 +26,14 @@ pip install choicemodels
 conda install choicemodels --channel conda-forge
 ```
 
+Or, for development with the [uv](https://docs.astral.sh/uv/) package manager:
+
+```
+uv sync --extra dev
+```
+
+Note: this project depends on the `stefancoe/pylogit@pandas_23_max` fork of PyLogit (for pandas 2.x compatibility), which is pulled directly from GitHub. Git must be available on your PATH.
+
 
 ### Documentation
 

@@ -1,12 +1,9 @@
-from __future__ import print_function
-
 import datetime
 import logging
 from collections import OrderedDict
 
 import numpy as np
 import pandas as pd
-# import pylogit  # move to as-needed (python 3.10 incompatibility)
 import scipy.optimize
 import scipy.stats
 from patsy import dmatrix
@@ -182,6 +179,8 @@ class MultinomialLogit(object):
 
         """
         if (self._estimation_engine == 'PyLogit'):
+
+            import pylogit
 
             m = pylogit.create_choice_model(data = self._df,
                                             obs_id_col = self._observation_id_col,

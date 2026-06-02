@@ -153,7 +153,7 @@ def test_alternative_specific_coeffs(num_alts):
         [[0, 0, 0],
          [1, 0, 0],
          [0, 1, 0],
-         [0, 0, 1]])
+         [0, 0, 1]], dtype=float)
 
     fish = get_df({'data': 'fish.csv'})
     fish_choosers = get_choosers({'choosers': 'fish_choosers.csv'})

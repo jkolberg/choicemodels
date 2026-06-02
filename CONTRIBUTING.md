@@ -39,7 +39,7 @@ You can contact Sam Maurer, the lead developer, at `maurer@urbansim.com`.
 - It works best to do this just before merging (in case other PR's are merged first, and so you know the release date for the changelog and documentation)
 
 - There are three places where the version number needs to be changed: 
-  - `setup.py`
+  - `pyproject.toml`
   - `choicemodels/__init__.py`
   - `docs/source/index.rst`
 
@@ -68,7 +68,7 @@ You can contact Sam Maurer, the lead developer, at `maurer@urbansim.com`.
 
 - Register an account at https://pypi.org, ask one of the current maintainers to add you to the project, and `pip install twine`
 
-- Run `python setup.py sdist bdist_wheel --universal`
+- Run `uv build`
 
 - This should create a `dist` directory containing two package files -- delete any old ones before the next step
 

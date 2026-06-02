@@ -1,0 +1,41 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "choicemodels"
+version = "0.2.3"
+description = "Tools for discrete choice estimation"
+readme = "README.md"
+license = { file = "LICENSE.txt" }
+authors = [{ name = "UDST" }]
+requires-python = ">=3.10"
+classifiers = [
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering :: Information Analysis",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "License :: OSI Approved :: BSD License",
+]
+dependencies = [
+    "numpy>=1.23",
+    "pandas>=2.0,<3",
+    "patsy>=0.5",
+    "scipy>=1.10",
+    "statsmodels>=0.14",
+    "pylogit @ git+https://github.com/stefancoe/pylogit.git@pandas_23_max",
+]
+
+[project.optional-dependencies]
+dev = ["pytest", "pytest-cov"]
+
+[project.urls]
+Homepage = "https://github.com/udst/choicemodels"
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["choicemodels"]
